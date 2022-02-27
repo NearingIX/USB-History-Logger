@@ -5,7 +5,7 @@ import winreg
 
 registryConnection = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
 keyInfo = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR")
-keyValue = winreg.QueryInfoKey(keyInfo)
+
 numberOfKeys = 0
 
 usbHistoryFile = open('USB_History.txt', 'a')
@@ -17,11 +17,14 @@ usbHistoryFile.write(str(firstSubKey) + "\n")
 print(firstSubKey)
 
 # Print subkeys
-
-while True:
+def printSubKey():
+    while True:
         try:
+            global numberOfKeys
+            global i
             numberOfKeys += 1
             subKey = winreg.EnumKey(keyInfo, numberOfKeys)
+            # openSubKey = winreg.OpenKey(keyInfo, subKey)
             # prints USB history subkeys
             for i in range (numberOfKeys):
                 print(subKey)
@@ -29,5 +32,5 @@ while True:
                 break
         except WindowsError:
             break
-        
+printSubKey()
 winreg.CloseKey(registryConnection)
