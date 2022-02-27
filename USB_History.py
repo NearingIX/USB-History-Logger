@@ -22,7 +22,6 @@ while True:
         try:
             numberOfKeys += 1
             subKey = winreg.EnumKey(keyInfo, numberOfKeys)
-            openSubKey = winreg.OpenKey(keyInfo, subKey)
             # prints USB history subkeys
             for i in range (numberOfKeys):
                 print(subKey)
