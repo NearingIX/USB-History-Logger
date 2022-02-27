@@ -5,9 +5,7 @@ import winreg
 
 registryConnection = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
 keyInfo = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR")
-
 numberOfKeys = 0
-
 usbHistoryFile = open('USB_History.txt', 'a')
 
 # Prints first subkey. Skipped in loop due to index of 0.
@@ -32,5 +30,6 @@ def printSubKey():
                 break
         except WindowsError:
             break
+            
 printSubKey()
 winreg.CloseKey(registryConnection)
