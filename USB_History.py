@@ -23,8 +23,7 @@ def printSubKey():
             numberOfKeys += 1
             usbHistoryFile = open('USB_History.txt', 'a')
             subKey = winreg.EnumKey(keyInfo, numberOfKeys)
-            # openSubKey = winreg.OpenKey(keyInfo, subKey)
-            # prints USB history subkeys
+            # Prints USB history subkeys
             for i in range (numberOfKeys):
                 print(subKey)
                 usbHistoryFile.write(str(subKey) + "\n")
