@@ -1,5 +1,4 @@
 # USB History Logger
-# Reg Path reference: winreg.HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR
 
 import winreg
 
@@ -7,8 +6,7 @@ registryConnection = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
 keyInfo = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SYSTEM\\CurrentControlSet\\Enum\\USBSTOR")
 numberOfKeys = 0
 
-# Prints first subkey. Skipped in loop due to index of 0.
-
+# Prints first subkey. First subkey skipped in loop due to index of 0.
 def printFirstSubKey():
     firstSubKey = winreg.EnumKey(keyInfo, 0)
     usbHistoryFile = open('USB_History.txt', 'a')
@@ -31,6 +29,6 @@ def printSubKey():
         except WindowsError:
             break
 
-printFirstSubKey()           
+printFirstSubKey()
 printSubKey()
 winreg.CloseKey(registryConnection)
