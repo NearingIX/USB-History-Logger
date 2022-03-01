@@ -1,5 +1,4 @@
 # USB History Logger
-
 import winreg
 
 registryConnection = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
